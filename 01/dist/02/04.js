@@ -17,6 +17,7 @@ function myParseInt(strNum, base) {
     const re = new RegExp("^(-)(-{1,})([" + baseSymbols.join('') + "]{1,})(.*" + ")$");
     // убираем лишние символы по всей строке
     strNum = strNum.replace((new RegExp("[^-" + baseSymbols.join('') + "]", "g")), "");
+    //  и вначале и в конце
     strNum = strNum.replace(re, "$1$3");
     let sign = 1;
     let i = 0;

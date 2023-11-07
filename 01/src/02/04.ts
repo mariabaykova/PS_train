@@ -22,6 +22,7 @@ function myParseInt( strNum: string, base?: number ): number {
 
     // убираем лишние символы по всей строке
     strNum = strNum.replace(( new RegExp("[^-"+baseSymbols.join('')+"]", "g") ), "");
+    //  и вначале и в конце
     strNum = strNum.replace( re, "$1$3");
     
     let sign = 1;
