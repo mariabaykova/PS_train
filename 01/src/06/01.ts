@@ -5,22 +5,22 @@ function laugh(...args) {
     console.log(...args);
 }
 
-const debouncedLaugh = debounce( laugh, 300 );
+const debouncedLaugh = debounce( laugh, 200 );
 
 debouncedLaugh(1);
 debouncedLaugh(2);
 debouncedLaugh(3);
-setTimeout(() => debouncedLaugh(4), 500);
+setTimeout(() => debouncedLaugh(4), 2000);
 debouncedLaugh(5);
 
 function debounce(fn, cooldown)  {
     let timerId;
     return function( ...arguments ) {
         if (timerId != null) {
+            console.log(`cancel ${timerId}`);
             clearTimeout(timerId);
         }
-
-        timerId = setTimeout( () => fn.apply(this, arguments), cooldown );
+        timerId = setTimeout( () => {fn.apply(this, arguments); timerId = null;}, cooldown );
     }
 } 
 
