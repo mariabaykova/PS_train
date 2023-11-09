@@ -5,7 +5,9 @@ console.log(myParseInt('-10', 2)); // -2
 console.log(myParseInt('FFP', 16)); // 255
 console.log(myParseInt('--20')); // NaN
 console.log(myParseInt('%$+---++-2&&0***^6%%$-+2', 11)); // NaN
+console.log(parseInt('--50', 11));
 console.log(myParseInt('+4', 11)); // 4
+console.log(parseInt('+4)', 11)); // 4
 
 function myParseInt( strNum: string, base?: number ): number {
     if ( !base ) {
