@@ -24,14 +24,18 @@ const tree: TreeNode = {
 log(tree); // 1 2 3 5 4 44
 
 function log( tree: TreeNode ): void {
-    let queue = [ tree ];
-    let res = [];
+    const queue = [ tree ];
+    const res = [];
     while( queue.length > 0 ) {
         const head = queue.shift();
         res.push(head.value);
-        if ( head.children ) {
-            queue.push( ...head.children );
-        } 
+        // if ( head.children ) {
+        //     queue.push( ...head.children );
+        // } 
+        // нуллиш оператор
+        head.children?.forEach(
+            (child) => queue.push(child)
+        );
     }
     console.log(...res);
 }

@@ -19,14 +19,17 @@ const tree = {
 };
 log(tree); // 1 2 3 5 4 44
 function log(tree) {
-    let queue = [tree];
-    let res = [];
+    var _a;
+    const queue = [tree];
+    const res = [];
     while (queue.length > 0) {
         const head = queue.shift();
         res.push(head.value);
-        if (head.children) {
-            queue.push(...head.children);
-        }
+        // if ( head.children ) {
+        //     queue.push( ...head.children );
+        // } 
+        // нуллиш оператор
+        (_a = head.children) === null || _a === void 0 ? void 0 : _a.forEach((child) => queue.push(child));
     }
     console.log(...res);
 }
