@@ -1,20 +1,12 @@
 // написать простейший event emitter
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var _EventEmitter_eventsList;
 class EventEmitter {
-    constructor() {
-        // обработчики будем хранить здесь 
-        _EventEmitter_eventsList.set(this, new Map());
-    }
+    // обработчики будем хранить здесь 
+    #eventsList = new Map();
     getEventList(event) {
-        let eventList = __classPrivateFieldGet(this, _EventEmitter_eventsList, "f").get(event);
+        let eventList = this.#eventsList.get(event);
         if (eventList == null) {
             eventList = new Set();
-            __classPrivateFieldGet(this, _EventEmitter_eventsList, "f").set(event, eventList);
+            this.#eventsList.set(event, eventList);
         }
         return eventList;
     }
@@ -27,7 +19,7 @@ class EventEmitter {
     off(event, cb) {
         if (!event) {
             // выключаем все события и их обработчики соотв-но
-            __classPrivateFieldGet(this, _EventEmitter_eventsList, "f").clear();
+            this.#eventsList.clear();
             return;
         }
         if (!cb) {
@@ -59,7 +51,6 @@ class EventEmitter {
         // возвращаем wrapper, потому что он используется для отмены
     }
 }
-_EventEmitter_eventsList = new WeakMap();
 function testFn(arg) {
     console.log(`hello! ${arg}`);
 }

@@ -1,11 +1,9 @@
 class Foo {
-    constructor() {
-        this.bar = 1;
-        this.bla = () => console.log(this.bar);
-        this.baz = function () {
-            console.log(this.bar);
-        };
-    }
+    bar = 1;
+    bla = () => console.log(this.bar);
+    baz = function () {
+        console.log(this.bar);
+    };
 }
 // console.log(Foo.bar);
 // let a = new Foo();

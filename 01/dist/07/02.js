@@ -1,6 +1,8 @@
 // обход дерева в ширину
 // вывести все элементы дерева так, чтобы по очереди выводились все элементы каждого яруса
 class TreeNode {
+    value;
+    children;
 }
 const tree = {
     value: 1,
@@ -19,7 +21,6 @@ const tree = {
 };
 log(tree); // 1 2 3 5 4 44
 function log(tree) {
-    var _a;
     const queue = [tree];
     const res = [];
     while (queue.length > 0) {
@@ -29,7 +30,7 @@ function log(tree) {
         //     queue.push( ...head.children );
         // } 
         // нуллиш оператор
-        (_a = head.children) === null || _a === void 0 ? void 0 : _a.forEach((child) => queue.push(child));
+        head.children?.forEach((child) => queue.push(child));
     }
     console.log(...res);
 }
