@@ -23,6 +23,15 @@ const tree: TreeNode = {
   
 log(tree); // 1 2 3 5 4 44
 
+function* log1 ( tree: TreeNode ): Generator {
+  let curNode = tree;
+  yield curNode.value;
+
+  while( curNode.children ) {
+    yield curNode.children;
+  }
+}
+
 function log( tree: TreeNode ): void {
     const queue = [ tree ];
     const res = [];

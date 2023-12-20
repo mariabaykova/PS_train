@@ -20,6 +20,13 @@ const tree = {
     ]
 };
 log(tree); // 1 2 3 5 4 44
+function* log1(tree) {
+    let curNode = tree;
+    yield curNode.value;
+    while (curNode.children) {
+        yield curNode.children;
+    }
+}
 function log(tree) {
     const queue = [tree];
     const res = [];
